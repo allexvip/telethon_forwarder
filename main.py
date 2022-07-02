@@ -15,7 +15,8 @@ config.read("config.ini")
 api_id = config['Telegram']['api_id']
 api_hash = config['Telegram']['api_hash']
 username = config['Telegram']['username']
-discounts_channels_list = config['Telegram']['channels_list_from'].split(',')
+channels_list_from = config['Telegram']['channels_list_from'].split(',')
+channels_list_from = list(map(int, channels_list_from))
 channel_to = config['Telegram']['channel_to']
 
 with TelegramClient('name', api_id, api_hash) as client:
@@ -29,7 +30,7 @@ with TelegramClient('name', api_id, api_hash) as client:
         await event.reply(f'И тебе привет {event.id}')
 
 
-    @client.on(events.NewMessage(discounts_channels_list))
+    @client.on(events.NewMessage(channels_list_from))
     async def main(event):
         print(event.message)
         await client.forward_messages(channel_to, event.message)
