@@ -3,7 +3,6 @@ import json
 import logging
 from telethon.sync import TelegramClient, events
 from telethon.tl.types import InputMessagesFilterVideo
-from moviepy.editor import *
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
                     level=logging.WARNING)
