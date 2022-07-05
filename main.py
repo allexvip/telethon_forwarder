@@ -33,6 +33,6 @@ with TelegramClient('name', api_id, api_hash) as client:
     @client.on(events.NewMessage(channels_list_from))
     async def main(event):
         print(event.message)
-        await client.forward_messages(channel_to, event.message)
+        await client.forward_messages(int(channel_to), event.message)
 
     client.run_until_disconnected()
